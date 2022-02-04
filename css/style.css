@@ -23,7 +23,7 @@
 }
 
 .name1 {
-    margin: 25px;
+    margin: 24px;
     background-color: royalblue;
     color: white;
     border: none;
@@ -32,8 +32,8 @@
     margin-left: 200px;
 }
 
-.name2 {
-    margin: 25px;
+.name {
+    margin: 24px;
     background-color: royalblue;
     color: white;
     border: none;
@@ -41,23 +41,6 @@
     font-family: Calibri;
 }
 
-.name3 {
-    margin: 25px;
-    background-color: royalblue;
-    color: white;
-    border: none;
-    font-size: 20px;
-    font-family: Calibri;
-}
-
-.name4 {
-    margin: 25px;
-    background-color: royalblue;
-    color: white;
-    border: none;
-    font-size: 20px;
-    font-family: Calibri;
-}
 
 .mainbutton:visited, .mainbutton:link {
     text-decoration: none;
@@ -72,6 +55,14 @@
 }
 
 .name1:hover, .mainbutton:active {
+    text-decoration: underline;
+}
+
+.name:visited, .mainbutton:link {
+    text-decoration: none;
+}
+
+.name:hover, .mainbutton:active {
     text-decoration: underline;
 }
 
@@ -91,8 +82,4 @@
     background-color: deepskyblue;
     border-radius: 10px;
     margin-left: 200px;
-}
-
-.photo {
-
 }
