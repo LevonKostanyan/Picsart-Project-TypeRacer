@@ -1,10 +1,7 @@
-
-
- /*             CONTENT               */
+/*             CONTENT               */
 .content{
     width: 100%;
 }
-
 
 input{
     font-family: 'Roboto', sans-serif;
@@ -40,12 +37,9 @@ input{
     border-radius:20px;
 }
 
-
 .correct{
     color: rgb(4, 112, 40);
 }
-
-
 
 .incorrect {
     -webkit-animation: incorrect 1s linear infinite;
@@ -58,12 +52,9 @@ input{
     100% { background-color: #D08383 }
   }
 
-
-
 .cursor{
     background-color: lightgreen;
 }
-
 
 .noselect {
     /* To prohibit copying */

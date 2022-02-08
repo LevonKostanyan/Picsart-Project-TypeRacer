@@ -5,7 +5,6 @@ const text = `I had a painting teacher once tell me that, the difference between
 //To prevent copying text during the game
 textForTyping.classList.add("noselect")
 
-
 //Split the text into letters and put it in a  <span> tag
 const characters = text.split('').map((char) => {
     const span = document.createElement("span")
@@ -21,29 +20,27 @@ let cursorChar = characters[charIndex]
 cursorChar.classList.add("cursor")
 
 //Split Input value into latters and  compare with text
-inp.oninput = () => {
+function onInput() {
     let inpArray = inp.value.split('');
     for (let i in inpArray) {
-
-        if (charIndex >= characters.length) {
-            inp.value = null
-            return;
-        }
-
-        if (inpArray[i] === cursorChar.innerHTML) {
-
+        if (inpArray[i] == cursorChar.innerText) {
             isCorrect = true;
             cursorChar.classList.remove("cursor")
             cursorChar.classList.add("correct");
             inp.classList.remove("incorrect")
             cursorChar = characters[++charIndex]
-            cursorChar.classList.add("cursor")
-
-        } else {
+        }
+        else {
             isCorrect = false;
             cursorChar.classList.remove("correct");
             inp.classList.add("incorrect");
+        }
 
+        if (charIndex >= characters.length) {
+            //End Game
+            inp.value = null
+            inp.removeEventListener('input', onInput);
+            return;
         }
     }
 
@@ -51,6 +48,8 @@ inp.oninput = () => {
     if (inp.value.indexOf(' ') > -1 && isCorrect) {
         inp.value = null
     }
+    cursorChar.classList.add("cursor")
 }
 
+inp.addEventListener('input', onInput);
 
