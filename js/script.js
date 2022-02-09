@@ -20,9 +20,31 @@ let isCorrect;
 let cursorChar = characters[charIndex]
 cursorChar.classList.add("cursor")
 
-//Split Input value into latters and  compare with text
+const timerEl = document.getElementById("remaining-time");
+let timer;
+let correctLettersCount = 0;
+
+const taskTimer = () => {
+    const now = new Date();
+
+    timer = setInterval(() => {
+        const t = new Date(new Date() - now);
+        const minutes = t.getMinutes();
+        const seconds = t.getSeconds();
+
+        timerEl.innerHTML = `Minutes - ${minutes} Seconds - ${seconds}`;
+    }, 1000);
+};
+
+//Split Input value into letters and  compare with text
 inp.oninput = () => {
     let inpArray = inp.value.split('');
+    let textLettersCount = text.split('').filter((t) => t !== ' ');
+
+    if (!timer) {
+        taskTimer();
+    }
+
     for (let i in inpArray) {
 
         if (charIndex >= characters.length) {
@@ -31,14 +53,13 @@ inp.oninput = () => {
         }
 
         if (inpArray[i] === cursorChar.innerHTML) {
-
             isCorrect = true;
+            correctLettersCount++;
             cursorChar.classList.remove("cursor")
             cursorChar.classList.add("correct");
             inp.classList.remove("incorrect")
-            cursorChar = characters[++charIndex]
             cursorChar.classList.add("cursor")
-
+            cursorChar = characters[++charIndex]
         } else {
             isCorrect = false;
             cursorChar.classList.remove("correct");
@@ -49,7 +70,15 @@ inp.oninput = () => {
 
     // Checking if the user entered a space
     if (inp.value.indexOf(' ') > -1 && isCorrect) {
-        inp.value = null
+        inp.value = null;
+        correctLettersCount--;
+    }
+
+    console.log(correctLettersCount)
+    console.log(textLettersCount.length)
+
+    if (correctLettersCount === textLettersCount.length) {
+        clearInterval(timer);
     }
 }
 
