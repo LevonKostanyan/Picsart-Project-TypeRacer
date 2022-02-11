@@ -1,12 +1,10 @@
-
-
- /*             CONTENT               */
-.content{
+/*             CONTENT               */
+.content {
     width: 100%;
 }
 
 
-input{
+input {
     font-family: 'Roboto', sans-serif;
     color: #333;
     font-size: 1.2rem;
@@ -18,49 +16,53 @@ input{
     width: 50%;
     display: block;
     border-bottom: 0.3rem solid transparent;
-    margin-top:70px;
+    margin-top: 70px;
 }
 
-.text-for-typing{
+.text-for-typing {
     margin: 0 auto;
-    width:500px;
+    width: 500px;
     font-size: 24px;
     text-align: center;
-    margin-top:70px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 70px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
 
-.typing-race{
-    max-width:1000px;
+.typing-race {
+    max-width: 1000px;
     padding: 20px;
     margin: 0 auto;
-    margin-top:70px;
-    border:2px solid #a5aaac;
-    border-radius:20px;
+    margin-top: 70px;
+    border: 2px solid #a5aaac;
+    border-radius: 20px;
 }
 
 
-.correct{
+.correct {
     color: rgb(4, 112, 40);
 }
-
 
 
 .incorrect {
     -webkit-animation: incorrect 1s linear infinite;
     animation: incorrect 1s linear infinite;
-  }
-  @-webkit-keyframes incorrect {
-    100% { background-color: #D08383}
-  }
-  @keyframes incorrect {
-    100% { background-color: #D08383 }
-  }
+}
+
+@-webkit-keyframes incorrect {
+    100% {
+        background-color: #D08383
+    }
+}
+
+@keyframes incorrect {
+    100% {
+        background-color: #D08383
+    }
+}
 
 
-
-.cursor{
+.cursor {
     background-color: lightgreen;
 }
 
