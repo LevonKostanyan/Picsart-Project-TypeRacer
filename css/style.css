@@ -6,6 +6,7 @@ body{
     background-color: #cce3de;
 }
 
+/* HEADER */
 .menu {
     height: 110px;
     width: 100%;
@@ -47,7 +48,6 @@ body{
     cursor: pointer;
 }
 
-
 .mainbutton:visited, .mainbutton:link {
     text-decoration: none;
 }
@@ -76,12 +76,13 @@ body{
     height: 70px;
     width: 70px;
     margin-left: 150px;
-} 
+}
+/*     HEADER      END */ 
+
  /*             CONTENT               */
 .content{
     width: 100%;
 }
-
 input{
     font-family: 'Roboto', sans-serif;
     color: #333;
@@ -106,7 +107,6 @@ input{
     color: #cce3de;
     
 }
-
 .typing-race{
     max-width:1000px;
     padding: 20px;
@@ -115,11 +115,9 @@ input{
     border-radius:20px;
     background-color: royalblue;
 }
-
 .correct{
     color: rgb(0, 255, 0);      
 }
-
 .incorrect {
     -webkit-animation: incorrect 1s linear infinite;
     animation: incorrect 1s linear infinite;
@@ -134,7 +132,6 @@ input{
 .cursor{
     background-color: lightgreen;
 }
-
 .noselect {
     /* To prohibit copying */
     -moz-user-select: none;
@@ -157,7 +154,7 @@ input{
     font-weight: bold;
 }   
 
-.wpm-and-wps{
+.stats{
     display: flex;
     justify-content: space-around;
     padding: 30px 0;
@@ -168,11 +165,11 @@ input{
     color: #cce3de;
     font-weight: bold;
 }
-        /*           CONTENT   END      */
+/*           CONTENT   END      */
 
  /*           FOOTER     START        */
 .footer{
-    margin-top:120px;
+    margin-top:220px;
     height: 110px;
     background-color: royalblue;
     padding: 2em 0;
