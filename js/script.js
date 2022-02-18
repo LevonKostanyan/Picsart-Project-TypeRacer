@@ -1,27 +1,29 @@
 const inp = document.querySelector("input");
 const textForTyping = document.querySelector(".text-for-typing")
-const text = `I had a painting teacher once tell me that, the difference between a good painting and a great painting, is typically five strokes. And they're usually the five boldest strokes in the painting. The question, of course, is which five strokes?`
-const wpm = document.querySelector(".wpm");
-const wps = document.querySelector(".wps");
+const pharagraphs = [`The oldest classical Greek and Latin writing had little or no space between words and could be written in boustrophedon (alternating directions).`,
+    `I had a painting teacher once tell me that, the difference between a good painting and a great painting, is typically five strokes. And they're usually the five boldest strokes in the painting. The question, of course, is which five strokes?`,
+    `Ever since I was a child, folks have thought they had me pegged, because of the way I am, the way I talk. And they're always wrong.`
+]
+//Generate random text from pharagraphs[]
+const text = pharagraphs[parseInt(Math.random() * pharagraphs.length)];
 
 //timer
 const timerEl = document.getElementById("remaining-time");
-let timer;
-let   minutes = 0;
-      seconds = 0;  
+let wpm = document.querySelector(".wpm");
+let wps = document.querySelector(".wps");
+let timer,
+    minutes = 0;
+seconds = 0;
 
 const taskTimer = () => {
     const now = new Date();
     timer = setInterval(() => {
         const t = new Date(new Date() - now);
-         minutes = t.getMinutes();
-         seconds = t.getSeconds();
+        minutes = t.getMinutes();
+        seconds = t.getSeconds();
         timerEl.innerHTML = `Minutes - ${minutes} Seconds - ${seconds}`;
     }, 1000);
 }
-
-
-
 //To prevent copying text during the game
 textForTyping.classList.add("noselect")
 
@@ -53,14 +55,13 @@ function onInput() {
             cursorChar.classList.add("correct");
             inp.classList.remove("incorrect")
             cursorChar = characters[++charIndex]
-            
+
         }
         else {
             isCorrect = false;
             cursorChar.classList.remove("correct");
             inp.classList.add("incorrect");
         }
-
         if (charIndex >= characters.length) {
             //End Game
             inp.value = null;
@@ -69,14 +70,10 @@ function onInput() {
             return;
         }
     }
-   
-
     // Checking if the user entered a space
     if (inp.value.indexOf(' ') > -1 && isCorrect) {
         inp.value = null
     }
     cursorChar.classList.add("cursor")
 }
-
-
 inp.addEventListener('input', onInput);
