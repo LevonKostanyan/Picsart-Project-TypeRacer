@@ -194,6 +194,23 @@ input {
     font-weight: bold;
 }
 
+.my-bar{
+    width: 100%;
+    height: 20px;
+    background: #3b3b3b;
+    box-shadow: 2px 14px 15px -7px rgba(30, 166, 250, 0.36);
+    border-radius: 50px;
+}
+
+.my-progress{
+    width:0%;
+    height: 20px;
+    border-radius: 50px;
+    background-color: #03bcf6;
+    color: white;
+    transition: width 300ms linear;
+}
+
 .stats {
     display: flex;
     justify-content: space-around;

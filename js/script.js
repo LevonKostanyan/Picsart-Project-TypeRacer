@@ -7,17 +7,16 @@ const timerEl = document.getElementById("remaining-time");
 const textForTyping = document.querySelector(".text-for-typing")
 
 const pharagraphs = [`The oldest classical Greek and Latin writing had little or no space between words and could be written in boustrophedon (alternating directions).`,
-    `I had a painting teacher once tell me that, the difference between a good painting and a great painting, is typically five strokes. And they're usually the five boldest strokes in the painting. The question, of course, is which five strokes?`,
+    `I had a painting teacher once tell me that, the difference between a good painting and a great painting, is typically five strokes.`,
     `Ever since I was a child, folks have thought they had me pegged, because of the way I am, the way I talk. And they're always wrong.`
 ]
 //Generate random text from pharagraphs[]
 const text = pharagraphs[parseInt(Math.random() * pharagraphs.length)];
 
-
 //timer
 let timer,
     minutes = 0;
-    seconds = 0;
+seconds = 0;
 
 const taskTimer = () => {
     const now = new Date();
@@ -44,7 +43,6 @@ let charIndex = 0;
 let isCorrect = false;
 let cursorChar = characters[charIndex]
 cursorChar.classList.add("cursor")
-
 //Split Input value into latters and  compare with text
 function onInput() {
     let inpArray = inp.value.split('');
@@ -68,7 +66,7 @@ function onInput() {
         if (charIndex >= characters.length) {
             //End Game
             const numberOfWords = text.split(" ").length;
-            const wordPerSeconde = numberOfWords / seconds
+            const wordPerSeconde = numberOfWords / seconds;
             wps.innerText = ` WPS - ${wordPerSeconde.toFixed(1)}`
             const wordPerMinute = wordPerSeconde * 60
             wpm.innerText = ` WPM - ${wordPerMinute.toFixed(1)}`
@@ -94,14 +92,25 @@ function resetGame() {
 
 tryAgainBtn.addEventListener('click', resetGame);
 
-
 //Change Theme and save it in local storage
-
 if (!localStorage.theme) localStorage.theme = "light"
 document.body.className = localStorage.theme
 
 changeColor.addEventListener('click', () => {
     document.body.classList.toggle("dark-mode");
     localStorage.theme = document.body.className || "light"
-})
+});
+
+
+//Show user input progress
+const progressBar = document.querySelector(".my-progress")
+let id = setInterval(() => {
+    if (progressBar.style.width === "100%") {
+        clearInterval(id)
+    }
+    progressBar.style.width = ((charIndex / characters.length) * 100).toFixed(2) + "%";
+    progressBar.innerHTML = progressBar.style.width
+},0);
+
+
 
