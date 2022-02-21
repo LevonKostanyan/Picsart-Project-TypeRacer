@@ -16,7 +16,7 @@ const text = pharagraphs[parseInt(Math.random() * pharagraphs.length)];
 //timer
 let timer,
     minutes = 0;
-seconds = 0;
+    seconds = 0;
 
 const taskTimer = () => {
     const now = new Date();
@@ -66,9 +66,9 @@ function onInput() {
         if (charIndex >= characters.length) {
             //End Game
             const numberOfWords = text.split(" ").length;
-            const wordPerSeconde = numberOfWords / seconds;
+            const wordPerSeconde = minutes > 0 ?  numberOfWords / (seconds + (minutes * 60)) : numberOfWords / seconds;  
             wps.innerText = ` WPS - ${wordPerSeconde.toFixed(1)}`
-            const wordPerMinute = wordPerSeconde * 60
+            const wordPerMinute = wordPerSeconde * 60;
             wpm.innerText = ` WPM - ${wordPerMinute.toFixed(1)}`
             inp.value = null;
             inp.removeEventListener('input', onInput);
@@ -110,7 +110,7 @@ let id = setInterval(() => {
     }
     progressBar.style.width = ((charIndex / characters.length) * 100).toFixed(2) + "%";
     progressBar.innerHTML = progressBar.style.width
-},0);
+}, 0);
 
 
 
