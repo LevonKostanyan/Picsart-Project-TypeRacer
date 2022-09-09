@@ -6,16 +6,16 @@ const tryAgainBtn = document.querySelector(".try-again")
 const timerEl = document.getElementById("remaining-time");
 const textForTyping = document.querySelector(".text-for-typing")
 
-const pharagraphs = [`The oldest classical Greek and Latin writing had little or no space between words and could be written in boustrophedon (alternating directions).`,
+const paragraphs = [`The oldest classical Greek and Latin writing had little or no space between words and could be written in boustrophedon (alternating directions).`,
     `I had a painting teacher once tell me that, the difference between a good painting and a great painting, is typically five strokes.`,
     `Ever since I was a child, folks have thought they had me pegged, because of the way I am, the way I talk. And they're always wrong.`
 ]
-//Generate random text from pharagraphs[]
-const text = pharagraphs[parseInt(Math.random() * pharagraphs.length)];
+//Generate random text from paragraphs[]
+const text = paragraphs[parseInt(Math.random() * paragraphs.length)];
 
 //timer
 let timer,
-    minutes = 0;
+    minutes = 0,
     seconds = 0;
 
 const taskTimer = () => {
@@ -28,7 +28,7 @@ const taskTimer = () => {
     }, 1000);
 }
 //To prevent copying text during the game
-textForTyping.classList.add("noselect")
+textForTyping.classList.add("no_select")
 
 //Split the text into letters and put it in a  <span> tag
 const characters = text.split('').map((char) => {
@@ -43,7 +43,8 @@ let charIndex = 0;
 let isCorrect = false;
 let cursorChar = characters[charIndex]
 cursorChar.classList.add("cursor")
-//Split Input value into latters and  compare with text
+
+//Split Input value into latter's and  compare with text
 function onInput() {
     let inpArray = inp.value.split('');
 
@@ -57,8 +58,7 @@ function onInput() {
             cursorChar.classList.add("correct");
             inp.classList.remove("incorrect")
             cursorChar = characters[++charIndex]
-        }
-        else {
+        } else {
             isCorrect = false;
             cursorChar.classList.remove("correct");
             inp.classList.add("incorrect");
@@ -66,9 +66,9 @@ function onInput() {
         if (charIndex >= characters.length) {
             //End Game
             const numberOfWords = text.split(" ").length;
-            const wordPerSeconde = minutes > 0 ?  numberOfWords / (seconds + (minutes * 60)) : numberOfWords / seconds;  
-            wps.innerText = ` WPS - ${wordPerSeconde.toFixed(1)}`
-            const wordPerMinute = wordPerSeconde * 60;
+            const wordPerSecond = minutes > 0 ? numberOfWords / (seconds + (minutes * 60)) : numberOfWords / seconds;
+            wps.innerText = ` WPS - ${wordPerSecond.toFixed(1)}`
+            const wordPerMinute = wordPerSecond * 60;
             wpm.innerText = ` WPM - ${wordPerMinute.toFixed(1)}`
             inp.value = null;
             inp.removeEventListener('input', onInput);
